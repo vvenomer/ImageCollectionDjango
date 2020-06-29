@@ -1,0 +1,15 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div id="div_table_container">
+    {% for img in object_list %}
+        <div class="div_table_cell" style="text-align: center;">
+            <a href="{% url 'image' id=img.id %}">
+               <img src="{{ img.image.url }}" style="max-height:100px; max-width:100px;"/><br />
+               <p> {{ img.title }}</p>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

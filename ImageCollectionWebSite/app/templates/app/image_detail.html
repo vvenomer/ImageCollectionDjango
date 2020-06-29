@@ -1,0 +1,45 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+{% load filters %}
+<h2>{{title}}</h2>
+
+<img src="{{img.image.url }}" style="max-width:100%;border: 1px solid;"/><br />
+<p>Owner: {{ img.user.username }}</p>
+<p>
+    Description:<br />
+    {{img.description }}
+</p>
+
+{% if user.is_authenticated and user.id == img.user.id %}
+<form action="{% url 'deleteImage' id=img.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Usuń obraz</button>
+</form>
+{% endif %}
+
+{% if img.canComment %}
+    {% if user|has_group:'Komentator' %} 
+    <form action="{% url 'addComment' imageId=img.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="content" placeholder="Zawartość komentarza" cols="200" style="resize: none;"></textarea>
+        <button type="submit">Skomentuj</button>
+    </form>
+    {% endif %}
+
+    {% for comment in comments %}
+        <div style="border: 1px solid;">
+            <p> Użytkownik {{ comment.user.username }} napisał(a): </p>
+            <p> {{ comment.content }}</p>
+            {% if user.is_authenticated and user.id == comment.user.id %}
+            <form action="{% url 'deleteComment' id=comment.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Usuń komentarz</button>
+            </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+https://www.youtube.com/watch?v=F5mRW0jo-U4
+
+create app - not sure if I need to - 35:30
+
+create model in db and migrations - 38:30
+
+create object in db - 45:00
+
+views? - 59:30
+
+views are actually controllers and templates are views - 1:12:00
+
+kod w htmlu - to nie kod - ssie -~ 1:30:00
+
+get data from db - 1:50:00
+
+save obj to db (forms) - 2:10:00
+
+post/get - 2:20:00
+
+django form fields - 2:27:00
+
+edit db object - 2:50:00
+
+custom urls - 2:52:00
+
