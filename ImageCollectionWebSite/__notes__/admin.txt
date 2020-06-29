@@ -1,7 +1,0 @@
-abc
-abc@def.ghi
-def
-
-
-def, ghi
-abcdef123456
