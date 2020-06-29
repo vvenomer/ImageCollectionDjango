@@ -108,11 +108,6 @@
     <Content Include="app\templates\app\loginpartial.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="readme.html">
-      <SubType>WebBrowser</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <InterpreterReference Include="Global|PythonCore|3.7" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />

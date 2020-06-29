@@ -2,11 +2,12 @@ from datetime import datetime
 from django.http import HttpRequest
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 import django.views.generic as djangoViews
 from app.models import Image, Comment
 from app.forms import ImageForm, BootstrapUserCreationForm
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseNotFound, HttpResponseForbidden, HttpResponseBadRequest
 
 class Home(djangoViews.ListView):
@@ -88,7 +89,6 @@ def register(request):
             user.groups.add(group)
             login(request, user)
             return redirect('/')
-        return HttpResponseBadRequest()
     else:
         form = BootstrapUserCreationForm()
     return render(request, 'app/register.html', {
